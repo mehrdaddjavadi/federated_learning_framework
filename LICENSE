@@ -1,0 +1,37 @@
+# Custom License for Federated Learning Framework
+
+This license governs the use of the Federated Learning Framework. By using this framework, you agree to the following terms and conditions:
+
+## Academic Use
+
+Academic use of this framework is permitted free of charge, provided that proper attribution is given. When using this framework in academic works, please include the following citation:
+
+```
+@framework{
+  author = {Mehrdad Javadi},
+  author_email = {mehrdaddjavadi@gamil.com}
+  title = {Federated Learning Framework},
+  year = {2024},
+  url = {https://github.com/mehrdaddjavadi/federated_learning_framework}
+}
+```
+
+## Commercial, Governmental, and Other Non-Academic Use
+
+For commercial, governmental, and other non-academic uses, please contact the author to obtain a usage license. All such uses are subject to approval and may require a licensing fee.
+
+Contact: mehrdaddjavadi@gmail.com or mehrdadjavadi64@gmail.com
+
+
+## Rights
+
+All rights to this framework, including its use and distribution, belong to the author. Unauthorized use, distribution, or modification of this framework is strictly prohibited.
+
+## Disclaimer
+
+This framework is provided "as is", without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and no infringement. In no event shall the author be liable for any claim, damages, or other liability, whether in an action of contract, tort, or otherwise, arising from, out of, or in connection with the framework or the use or other dealings in the framework.
+
+---
+
+Mehrdad javadi
+2024
