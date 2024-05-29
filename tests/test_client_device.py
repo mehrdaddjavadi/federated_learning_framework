@@ -2,12 +2,22 @@ import asyncio
 import pytest
 import tensorflow as tf
 from federated_learning_framework.client_device import ClientDevice
+from federated_learning_framework.encryption import create_context
 
 @pytest.mark.asyncio
 async def test_client_device():
+    context = create_context()
     model = tf.keras.Sequential([
         tf.keras.layers.Dense(10, input_shape=(3072,), activation='softmax')
     ])
-    client = ClientDevice(1, model, None)
-    await client.connect_to_central_server()
-    # Other optinal test cases
+    client = ClientDevice(client_id=1, model=model, context=context)
+    
+    connect_task = asyncio.create_task(client.connect_to_server('ws://localhost:8089'))
+
+    await asyncio.sleep(1)  # Give the client some time to connect
+
+    # Simulate communication and other test scenarios here
+
+    connect_task.cancel()
+    with pytest.raises(asyncio.CancelledError):
+        await connect_task
