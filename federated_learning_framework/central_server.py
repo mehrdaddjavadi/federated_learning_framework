@@ -19,20 +19,21 @@ class CentralServer:
         await self.connection.start()
 
     async def handle_client(self, websocket, client_id):
-        self.clients.add(websocket)
+        self.clients.add(client_id)
         self.logger.info(f"Central Server: Client {client_id} connected")
         try:
             while True:
                 message = await self.connection.receive(client_id)
-                if isinstance(message, dict) and 'weights' in message:
-                    await self.transmit_weights(message['weights'])
-                elif isinstance(message, dict) and 'data_request' in message:
-                    data = await self.get_data_from_client(client_id)
-                    await self.send_data_to_client(client_id, {'data': data})
+                if isinstance(message, dict):
+                    if 'weights' in message:
+                        await self.transmit_weights(message['weights'])
+                    elif 'data_request' in message:
+                        data = await self.get_data_from_client(client_id)
+                        await self.send_data_to_client(client_id, {'data': data})
         except ConnectionClosedError:
             self.logger.info(f"Central Server: Client {client_id} disconnected")
         finally:
-            self.clients.remove(websocket)
+            self.clients.remove(client_id)
 
     async def transmit_weights(self, weights):
         async with self.lock:

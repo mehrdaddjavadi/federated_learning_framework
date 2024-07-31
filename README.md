@@ -207,6 +207,68 @@ asyncio.run(main())
 ### Sample Execution Script Using Decorators For Interactive Environments Like Colab And Jupyter Notebook
 
 ```python
+
+import asyncio
+import nest_asyncio
+import tensorflow as tf
+from federated_learning_framework.central_server import CentralServer
+from federated_learning_framework.client_device import ClientDevice
+from federated_learning_framework.encryption import create_context
+from federated_learning_framework.models.tensorflow_model import TensorFlowModel
+
+nest_asyncio.apply()
+
+async def run_federated_learning():
+    # Setup models
+    model = tf.keras.Sequential([
+        tf.keras.layers.Dense(4, activation='relu', input_shape=(3072,)),
+        tf.keras.layers.Dense(10, activation='softmax')
+    ])
+    tf_model = TensorFlowModel(model)
+
+    # Create encryption context
+    context = create_context()
+
+    # Initialize server and clients
+    central_server = CentralServer(connection_type='websocket', context=context)
+    client1 = ClientDevice(client_id=1, model=tf_model, context=context)
+    client2 = ClientDevice(client_id=2, model=tf_model, context=context)
+
+    # Define URIs for the server
+    uri = "ws://localhost:8089"
+
+    # Run the server
+    async def server_task():
+        await central_server.run_server()
+
+    # Connect clients and run federated learning
+    async def client_task():
+        await client1.connect_to_central_server(uri)
+        await client2.connect_to_central_server(uri)
+
+        x_train = tf.random.normal((10, 3072))
+        y_train = tf.random.uniform((10,), maxval=10, dtype=tf.int32)
+
+        await asyncio.gather(
+            client1.federated_learning(x_train, y_train),
+            client2.federated_learning(x_train, y_train)
+        )
+
+    # Run both server and client tasks
+    await asyncio.gather(
+        server_task(),
+        client_task()
+    )
+
+# Execute the main federated learning function
+await run_federated_learning()
+
+
+```
+
+### Sample 2 Execution Script Using Decorators For Interactive Environments Like Colab And Jupyter Notebook
+
+```python
 import asyncio
 import tensorflow as tf
 import numpy as np

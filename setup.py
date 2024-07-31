@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='federated-learning-framework',
-    version='0.0.7',
+    version='0.0.7.1',
     description='A modular and extensible framework for federated learning applications.',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
