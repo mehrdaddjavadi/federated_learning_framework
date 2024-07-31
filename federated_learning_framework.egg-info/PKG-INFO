@@ -1,3 +1,32 @@
+Metadata-Version: 2.1
+Name: federated-learning-framework
+Version: 0.0.7
+Summary: A modular and extensible framework for federated learning applications.
+Home-page: https://github.com/mehrdaddjavadi/federated_learning_framework
+Author: Mehrdad Javadi
+Author-email: mehrdaddjavadi@gmail.com
+Keywords: federated learning,machine learning,deep learning,active learning,encryption,homomorphic encryption
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: tensorflow
+Requires-Dist: websockets
+Requires-Dist: pytest
+Requires-Dist: tenseal
+
 # Federated Learning Framework
 
 ## Overview

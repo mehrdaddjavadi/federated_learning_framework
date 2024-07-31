@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='federated-learning-framework',
-    version='0.0.1',
+    version='0.0.7',
     description='A modular and extensible framework for federated learning applications.',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
@@ -15,7 +15,6 @@ setup(
         'Intended Audience :: Developers',
         'Intended Audience :: Education',
         'Intended Audience :: Science/Research',
-        'License :: Free for academic use',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
@@ -25,7 +24,7 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Topic :: Scientific/Engineering :: Artificial Intelligence',
     ],
-    keywords='federated learning, machine learning, deep learning, encryption',
+    keywords='federated learning, machine learning, deep learning, active learning, encryption, homomorphic encryption',
     install_requires=[
         'numpy',
         'tensorflow',

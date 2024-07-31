@@ -7,7 +7,7 @@ from federated_learning_framework.encryption import create_context
 async def test_central_server():
     context = create_context()
     server = CentralServer(context=context)
-    server_task = asyncio.create_task(server.run_server('localhost', 8089))
+    server_task = asyncio.create_task(server.run_server())
 
     await asyncio.sleep(1)  # Give the server some time to start
 

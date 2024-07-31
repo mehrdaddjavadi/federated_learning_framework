@@ -1,5 +1,6 @@
 import asyncio
 import websockets
+import pickle
 from websockets.exceptions import ConnectionClosedError
 
 class ConnectionServer:
@@ -20,15 +21,17 @@ class ConnectionServer:
     async def handle_client(self, websocket, path):
         client_id = len(self.clients) + 1
         self.clients[client_id] = websocket
-        await self.client_handler(self, client_id)
+        await self.client_handler(websocket, client_id)
 
     async def send(self, client_id, message):
         client = self.clients[client_id]
-        await client.send(message)
+        serialized_message = pickle.dumps(message)
+        await client.send(serialized_message)
 
     async def receive(self, client_id):
         client = self.clients[client_id]
-        return await client.recv()
+        message = await client.recv()
+        return pickle.loads(message)
 
 class ConnectionClient:
     def __init__(self, connection_type, uri):
@@ -43,7 +46,9 @@ class ConnectionClient:
             raise NotImplementedError(f"Connection type {self.connection_type} not supported")
 
     async def send(self, message):
-        await self.connection.send(message)
+        serialized_message = pickle.dumps(message)
+        await self.connection.send(serialized_message)
 
     async def receive(self):
-        return await self.connection.recv()
+        message = await self.connection.recv()
+        return pickle.loads(message)

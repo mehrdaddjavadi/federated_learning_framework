@@ -1,0 +1,5 @@
+numpy
+tensorflow
+websockets
+pytest
+tenseal
