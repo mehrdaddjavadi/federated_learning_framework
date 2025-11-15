@@ -5,9 +5,15 @@ federated_learning_framework/__init__.py
 federated_learning_framework/active_learning.py
 federated_learning_framework/central_server.py
 federated_learning_framework/client_device.py
+federated_learning_framework/client_selection.py
 federated_learning_framework/connection.py
+federated_learning_framework/connection_manager.py
 federated_learning_framework/decorators.py
 federated_learning_framework/encryption.py
+federated_learning_framework/error_recovery.py
+federated_learning_framework/evaluation.py
+federated_learning_framework/privacy.py
+federated_learning_framework/progress_tracking.py
 federated_learning_framework/utils.py
 federated_learning_framework.egg-info/PKG-INFO
 federated_learning_framework.egg-info/SOURCES.txt
@@ -24,5 +30,6 @@ tests/test_active_learning.py
 tests/test_central_server.py
 tests/test_client_device.py
 tests/test_connection.py
+tests/test_connection_manager.py
 tests/test_encryption.py
 tests/test_utils.py
